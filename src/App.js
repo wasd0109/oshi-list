@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import GroupList from "./components/GroupList";
+import "./output.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      groupList: [],
+      memberList: {},
+      oshiList: [],
+      groupSelected: "",
+    };
+  }
+  onGroupMouseEnter = (event) => {
+    this.setState({ groupSelected: event.currentTarget.id });
+  };
+
+  render() {
+    return (
+      <div>
+        <GroupList onGroupMouseEnter={this.onGroupMouseEnter} />
+      </div>
+    );
+  }
 }
 
 export default App;
